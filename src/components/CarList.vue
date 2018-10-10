@@ -7,6 +7,7 @@
                 <li class="card-title">{{vehicle.petrol}}</li>
                 <li class="card-title">{{vehicle.course}} KM</li>
                 <li class="card-title">{{vehicle.price}} PLN</li>
+                <button class="btn" @click="deleteCar(vehicle.id)">Delete</button>
               </div>
             </div>
         </div>
@@ -22,24 +23,34 @@ export default {
             model: 'Vectra',
             course: '235000',
             petrol: 'PB/LPG',
-            price: '10000'
+            price: '10000',
+            id: 1
           },
           {
             brand: 'Lexus',
             model: 'IS',
             course: '70000',
             petrol: 'PB',
-            price: '75000'
+            price: '75000',
+             id: 2
           },
           {
             brand: 'Renault',
             model: 'Traffic',
             course: '370000',
             petrol: 'Diesel',
-            price: '20000'
+            price: '20000',
+             id: 3
           }
         ]
       }
+    },
+    methods: {
+        deleteCar(id){
+            this.vehicles = this.vehicles.filter(vehicle => {
+                return vehicle.id != id
+            })
+        }
     }
   }
 </script>
