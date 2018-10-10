@@ -44,7 +44,7 @@ import slugify from 'slugify'
     },
     methods: {
         AddVehicle(){
-            this.slug = slugify(this.brand + this.model + this.course, {
+            this.slug = slugify( this.brand + " " + this.model, {
                 replacement: '-',
                 remove: /[$*_+~,()'"!\-;@]/g,
                 lower: true

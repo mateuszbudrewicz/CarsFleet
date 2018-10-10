@@ -9,6 +9,11 @@
           <li class="card-title">{{vehicle.course}} KM</li>
           <li class="card-title">{{vehicle.price}} PLN</li>
           <button class="btn" @click="deleteCar(vehicle.id)">Delete</button>
+        <button class="btn btn-warning">
+            <router-link :to="{ name: 'EditVehicle', params: {vehicle_slug: vehicle.slug} }">
+              Edit
+            </router-link>
+          </button>
         </div>
       </div>
     </div>
