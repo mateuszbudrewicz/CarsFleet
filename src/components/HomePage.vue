@@ -6,7 +6,7 @@
     <p class="lead">Jeżeli potrzebujesz samochodu to dobrze trafiłeś ;)</p>
   </div>
 </div>
-    <div class="row">
+    <div class="row home">
       <div class="col-md-12">
         <h1>Witaj drogi kliencie!</h1>
         <p class="text">Wypożyczalnia samochodów osobowych i busów, serwis samochodowy, serwis ogumienia pojazdów osobowych i
@@ -42,5 +42,8 @@
 <style scoped>
 .text{
   text-align: justify;
+}
+.home{
+  margin-bottom: 50px;
 }
 </style>

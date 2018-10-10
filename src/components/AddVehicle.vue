@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h2 class="text-center">Add Vehicle</h2>
-    <div class="col-md-12">
+    <div class="col-md-12 home">
       <div class="row d-flex justify-content-center">
         <div class="col-md-2 input-group mb-2">
           Brand:
@@ -118,5 +118,8 @@
   }
   .input-group {
     margin-top: 5px;
+  }
+  .home{
+    margin-bottom: 50px;
   }
 </style>

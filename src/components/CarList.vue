@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="row d-flex justify-content-between">
+    <div class="row d-flex justify-content-between home">
       <div class="col-md-4 card text-white bg-secondary mb-3 text-center " v-for="vehicle in vehicles" :key="vehicle.id"
         style="max-width: 18rem;">
         <div class="card-header">{{vehicle.brand}} {{vehicle.model}}</div>
@@ -55,5 +55,7 @@
 </script>
 
 <style>
-
+.home{
+  margin-bottom: 50px;
+}
 </style>

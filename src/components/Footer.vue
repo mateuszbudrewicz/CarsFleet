@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <div class="col-md-12 fixed-bottom text-center">
+        <div class="col-md-12 fixed-bottom text-center foo">
             <p>Mateusz Budrewicz 2018</p>
         </div>
     </div>
@@ -12,6 +12,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>
