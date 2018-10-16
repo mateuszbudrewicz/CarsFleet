@@ -37,7 +37,7 @@ export default new Router({
       component: EditVehicle
     },
     {
-      path: '/booked-vehicles/:vehicle_slug',
+      path: '/booked-vehicles',
       name: 'BookedVehicles',
       component: BookedVehicles
     },

@@ -80,6 +80,7 @@
         course: '',
         price: '',
         slug: null,
+        book: false
       }
     },
     methods: {
@@ -97,6 +98,7 @@
             course: this.course,
             price: this.price,
             slug: this.slug,
+            book: this.book
           })
           .then(() => {
             this.$router.push({

@@ -1,7 +1,9 @@
 <template>
   <div class="container">
     <div class="row d-flex justify-content-between home">
-      <div class="col-md-4 card text-white bg-secondary mb-3 text-center " v-for="vehicle in vehicles" :key="vehicle.id"
+
+
+      <div class="col-md-4 card text-white bg-secondary mb-3 text-center " v-if="vehicle.book == false" v-for="vehicle in vehicles" :key="vehicle.id"
         style="max-width: 18rem;">
         <div class="card-header">{{vehicle.brand}} {{vehicle.model}}</div>
         <div class="card-body">
@@ -14,10 +16,24 @@
               Edit
             </router-link>
           </button>
-          <button class="btn btn-success" @click="bookCar(vehicle)">Book</button>
+          <button class="btn btn-success" @click="bookCar(vehicle); show()">Book</button>
           <button class="btn" @click="deleteCar(vehicle.id)">Delete</button>
         </div>
       </div>
+
+    <div class="col-md-4 card text-white bg-secondary mb-3 text-center " v-if="vehicle.book == true" v-for="vehicle in vehicles" :key="vehicle.id"
+        style="max-width: 18rem; opacity: 0.8">
+        <div class="card-header">{{vehicle.brand}} {{vehicle.model}}</div>
+        <div class="card-body">
+          {{vehicle.type}}
+          <li class="card-title">{{vehicle.petrol}}</li>
+          <li class="card-title">{{vehicle.course}} KM</li>
+          <li class="card-title">{{vehicle.price}} PLN</li>
+          <p class="book">ZAREZERWOWANY</p>
+        </div>
+      </div>
+
+
     </div>
   </div>
 </template>
@@ -37,6 +53,8 @@
         course: '',
         price: '',
         slug: null,
+        book: false,
+        id: ''
       }
     },
     methods: {
@@ -57,9 +75,18 @@
             course: vehicle.course,
             price: vehicle.price,
             slug: vehicle.slug,
+            book: vehicle.book = true,
+            idList: vehicle.id
           })
-
-      }
+        db.collection('vehicles').doc(vehicle.id).update({
+            book: this.book = true,
+          })
+            .then(() => {
+            this.$router.push({
+              name: 'BookedVehicles'
+            })
+          })
+      },
     },
     created() {
       db.collection('vehicles').get()
@@ -86,5 +113,9 @@
 <style>
 .home{
   margin-bottom: 50px;
+}
+.book{
+  color: red
+  
 }
 </style>

@@ -9,7 +9,7 @@
           <li class="card-title">{{vehicle.petrol}}</li>
           <li class="card-title">{{vehicle.course}} KM</li>
           <li class="card-title">{{vehicle.price}} PLN</li>
-          <button class="btn" @click="deleteCar(vehicle.id)">Cancel reservation</button>
+          <button class="btn" @click="deleteCar(vehicle.id); sendID(vehicle.idList)">Cancel reservation</button>
         </div>
       </div>
     </div>
@@ -22,6 +22,7 @@ import db from '@/firebase/init'
 export default {
    data() {
       return {
+        vehicles: [],
         bookedVehicles: []
       }
     },
@@ -33,9 +34,27 @@ export default {
               return vehicle.id != id
             })
           })
-      }
       },
+      sendID(id){
+         db.collection('vehicles').doc(id).update({
+            book: this.book = false,
+             })
+               .then(() => {
+            this.$router.push({
+              name: 'CarList'
+            })
+          })
+      },
+     },
        created() {
+           db.collection('vehicles').get()
+        .then(snapshot => {
+          snapshot.forEach(doc => {
+            let vehicle = doc.data();
+            vehicle.id = doc.id;
+            this.vehicles.push(vehicle);
+          });
+        });
       db.collection('bookedVehicles').get()
         .then(snapshot => {
           snapshot.forEach(doc => {
@@ -46,6 +65,7 @@ export default {
         });
     }
 }
+
 </script>
 
 <style>
