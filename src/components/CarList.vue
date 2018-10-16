@@ -16,12 +16,12 @@
               Edit
             </router-link>
           </button>
-          <button class="btn btn-success" @click="bookCar(vehicle); show()">Book</button>
+          <button class="btn btn-success" @click="bookCar(vehicle)">Book</button>
           <button class="btn" @click="deleteCar(vehicle.id)">Delete</button>
         </div>
       </div>
 
-    <div class="col-md-4 card text-white bg-secondary mb-3 text-center " v-if="vehicle.book == true" v-for="vehicle in vehicles" :key="vehicle.id"
+    <div class="col-md-4 card text-white bg-secondary mb-3 text-center not-allowed" v-if="vehicle.book == true" v-for="vehicle in vehicles" :key="vehicle.id"
         style="max-width: 18rem; opacity: 0.8">
         <div class="card-header">{{vehicle.brand}} {{vehicle.model}}</div>
         <div class="card-body">
@@ -118,4 +118,7 @@
   color: red
   
 }
+.not-allowed {
+  cursor: not-allowed;
+  }
 </style>
