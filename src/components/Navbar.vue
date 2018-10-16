@@ -19,6 +19,11 @@
         </li>
         <li class="nav-item">
           <a class="nav-link">
+            <router-link :to="{ name: 'BookedVehicles' }">Booked Cars</router-link>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
             <router-link :to="{ name: 'AddVehicle' }">Add Vehicle </router-link>
           </a>
         </li>

@@ -5,6 +5,7 @@ import About from '@/components/About'
 import CarList from '@/components/CarList'
 import AddVehicle from '@/components/AddVehicle'
 import EditVehicle from '@/components/EditVehicle'
+import BookedVehicles from '@/components/BookedVehicles'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/edit-vehicle/:vehicle_slug',
       name: 'EditVehicle',
       component: EditVehicle
+    },
+    {
+      path: '/booked-vehicles/:vehicle_slug',
+      name: 'BookedVehicles',
+      component: BookedVehicles
     },
   ]
 })

@@ -79,7 +79,7 @@
         petrol: '',
         course: '',
         price: '',
-        slug: null
+        slug: null,
       }
     },
     methods: {
@@ -96,7 +96,7 @@
             petrol: this.petrol,
             course: this.course,
             price: this.price,
-            slug: this.slug
+            slug: this.slug,
           })
           .then(() => {
             this.$router.push({

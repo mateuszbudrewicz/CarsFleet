@@ -14,6 +14,7 @@
               Edit
             </router-link>
           </button>
+          <button class="btn btn-success" @click="bookCar(vehicle)">Book</button>
           <button class="btn" @click="deleteCar(vehicle.id)">Delete</button>
         </div>
       </div>
@@ -27,7 +28,15 @@
   export default {
     data() {
       return {
-        vehicles: []
+        vehicles: [],
+        bookedVehicles: [],
+        brand: '',
+        model: '',
+        type: '',
+        petrol: '',
+        course: '',
+        price: '',
+        slug: null,
       }
     },
     methods: {
@@ -38,6 +47,18 @@
               return vehicle.id != id
             })
           })
+      },
+      bookCar(vehicle){
+         db.collection('bookedVehicles').add({
+            brand: vehicle.brand,
+            model: vehicle.model,
+            type: vehicle.type,
+            petrol: vehicle.petrol,
+            course: vehicle.course,
+            price: vehicle.price,
+            slug: vehicle.slug,
+          })
+
       }
     },
     created() {
@@ -47,6 +68,14 @@
             let vehicle = doc.data();
             vehicle.id = doc.id;
             this.vehicles.push(vehicle);
+          });
+        });
+      db.collection('bookedVehicles').get()
+        .then(snapshot => {
+          snapshot.forEach(doc => {
+            let vehicle = doc.data();
+            vehicle.id = doc.id;
+            this.bookedVehicles.push(vehicle);
           });
         });
     }
