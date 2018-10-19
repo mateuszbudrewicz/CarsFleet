@@ -115,6 +115,16 @@
 
         </div>
       </div>
+
+<div class="row d-flex justify-content-center">
+        <div class="col-md-2 input-group mb-2">
+          Year of production:
+        </div>
+        <div class="col-md-6 input-group ">
+          <input type="number" class="form-control" name="year" v-model="year">
+        </div>
+      </div>
+
       <div class="row d-flex justify-content-center">
         <div class="col-md-2 input-group mb-2">
           Type:
@@ -203,6 +213,7 @@
       return {
         brand: '',
         model: '',
+        year: '',
         type: '',
         capacity: '',
         petrol: '',
@@ -415,7 +426,10 @@
             brand: this.brand,
             model: this.model,
             type: this.type,
+            year: this.year,
             petrol: this.petrol,
+            gearbox: this.gearbox,
+            capacity: this.capacity,
             course: this.course,
             price: this.price,
             slug: this.slug,

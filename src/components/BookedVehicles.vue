@@ -5,10 +5,13 @@
         style="max-width: 18rem;">
         <div class="card-header">{{vehicle.brand}} {{vehicle.model}}</div>
         <div class="card-body">
-          {{vehicle.type}}
-          <li class="card-title">{{vehicle.petrol}}</li>
-          <li class="card-title">{{vehicle.course}} KM</li>
-          <li class="card-title">{{vehicle.price}} PLN</li>
+         <p> {{vehicle.type}}</p>
+         <p> Year of production {{vehicle.year}}</p>
+          <p> {{vehicle.petrol}} </p>
+          <p>Capacity: {{vehicle.capacity}} ccm</p>
+          <p> Course: {{vehicle.course}} KM </p>
+          <p> {{vehicle.gearbox}}</p>
+          <p> Price: {{vehicle.price}} PLN</p>
           <button class="btn" @click="deleteCar(vehicle.id); sendID(vehicle.idList)">Cancel reservation</button>
         </div>
       </div>

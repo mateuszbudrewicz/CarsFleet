@@ -3,14 +3,18 @@
     <div class="row d-flex justify-content-between home">
 
 
-      <div class="col-md-4 card text-white bg-secondary mb-3 text-center " v-if="vehicle.book == false" v-for="vehicle in vehicles" :key="vehicle.id"
-        style="max-width: 18rem;">
+      <div class="col-md-4 card text-white bg-secondary mb-3 text-center " v-if="vehicle.book == false" v-for="vehicle in vehicles"
+        :key="vehicle.id" style="max-width: 18rem;">
         <div class="card-header">{{vehicle.brand}} {{vehicle.model}}</div>
         <div class="card-body">
-          {{vehicle.type}}
-          <li class="card-title">{{vehicle.petrol}}</li>
-          <li class="card-title">{{vehicle.course}} KM</li>
-          <li class="card-title">{{vehicle.price}} PLN</li>
+          <p> {{vehicle.type}}</p>
+          <p> Year of production: {{vehicle.year}}</p>
+          <p> {{vehicle.petrol}} </p>
+          <p>Capacity: {{vehicle.capacity}} ccm</p>
+          <p> Course: {{vehicle.course}} KM </p>
+          <p> {{vehicle.gearbox}}</p>
+          <p> Price: {{vehicle.price}} PLN</p>
+
           <button class="btn btn-warning">
             <router-link :to="{ name: 'EditVehicle', params: {vehicle_slug: vehicle.slug} }">
               Edit
@@ -21,14 +25,17 @@
         </div>
       </div>
 
-    <div class="col-md-4 card text-white bg-secondary mb-3 text-center not-allowed" v-if="vehicle.book == true" v-for="vehicle in vehicles" :key="vehicle.id"
-        style="max-width: 18rem; opacity: 0.8">
+      <div class="col-md-4 card text-white bg-secondary mb-3 text-center not-allowed" v-if="vehicle.book == true" v-for="vehicle in vehicles"
+        :key="vehicle.id" style="max-width: 18rem; opacity: 0.8">
         <div class="card-header">{{vehicle.brand}} {{vehicle.model}}</div>
         <div class="card-body">
-          {{vehicle.type}}
-          <li class="card-title">{{vehicle.petrol}}</li>
-          <li class="card-title">{{vehicle.course}} KM</li>
-          <li class="card-title">{{vehicle.price}} PLN</li>
+          <p> {{vehicle.type}}</p>
+          <p> Year of production: {{vehicle.year}}</p>
+          <p> {{vehicle.petrol}} </p>
+          <p>Capacity: {{vehicle.capacity}} ccm</p>
+          <p> Course: {{vehicle.course}} KM </p>
+          <p> {{vehicle.gearbox}}</p>
+          <p> Price: {{vehicle.price}} PLN</p>
           <p class="book">ZAREZERWOWANY</p>
         </div>
       </div>
@@ -48,8 +55,11 @@
         bookedVehicles: [],
         brand: '',
         model: '',
+        year: '',
         type: '',
+        capacity: '',
         petrol: '',
+        gearbox: '',
         course: '',
         price: '',
         slug: null,
@@ -66,22 +76,25 @@
             })
           })
       },
-      bookCar(vehicle){
-         db.collection('bookedVehicles').add({
-            brand: vehicle.brand,
-            model: vehicle.model,
-            type: vehicle.type,
-            petrol: vehicle.petrol,
-            course: vehicle.course,
-            price: vehicle.price,
-            slug: vehicle.slug,
-            book: vehicle.book = true,
-            idList: vehicle.id
-          })
+      bookCar(vehicle) {
+        db.collection('bookedVehicles').add({
+          brand: vehicle.brand,
+          model: vehicle.model,
+          type: vehicle.type,
+          year: vehicle.year,
+          capacity: vehicle.capacity,
+          petrol: vehicle.petrol,
+          gearbox: vehicle.gearbox,
+          course: vehicle.course,
+          price: vehicle.price,
+          slug: vehicle.slug,
+          book: vehicle.book = true,
+          idList: vehicle.id
+        })
         db.collection('vehicles').doc(vehicle.id).update({
             book: this.book = true,
           })
-            .then(() => {
+          .then(() => {
             this.$router.push({
               name: 'BookedVehicles'
             })
@@ -111,14 +124,16 @@
 </script>
 
 <style>
-.home{
-  margin-bottom: 50px;
-}
-.book{
-  color: red
-  
-}
-.not-allowed {
-  cursor: not-allowed;
+  .home {
+    margin-bottom: 50px;
   }
+
+  .book {
+    color: red
+  }
+
+  .not-allowed {
+    cursor: not-allowed;
+  }
+
 </style>
