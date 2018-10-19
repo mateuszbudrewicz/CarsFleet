@@ -13,5 +13,7 @@ export default {
 </script>
 
 <style scoped>
-
+.foo {
+    background-color: pink;
+}
 </style>
