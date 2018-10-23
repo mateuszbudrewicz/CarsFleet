@@ -1,14 +1,13 @@
 <template>
   <div class="container">
     <div class="jumbotron jumbotron-fluid">
-  <div class="container text-center">
+  <div class="container text-center jumbotext">
     <h1 class="display-4">Rent a car!</h1>
     <p class="lead">Jeżeli potrzebujesz samochodu to dobrze trafiłeś ;)</p>
   </div>
 </div>
     <div class="row home">
       <div class="col-md-12">
-        <h1>Witaj drogi kliencie!</h1>
         <p class="text">Wypożyczalnia samochodów osobowych i busów, serwis samochodowy, serwis ogumienia pojazdów osobowych i
           ciężarowych, samochody zastępcze dla klientów, holowanie do serwisu własną pomocą drogową, profesjonalna
           myjnia samoobsługowa, wszystkie te punkty powodują że stajemy naprzeciw szerokiego wachlarza zapotrzebowań
@@ -40,6 +39,10 @@
 </script>
 
 <style scoped>
+.jumbotron{
+  background-image: url('../assets/img/street.jpg');
+
+}
 .text{
   text-align: justify;
 }

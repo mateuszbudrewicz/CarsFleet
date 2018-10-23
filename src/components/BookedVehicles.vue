@@ -4,15 +4,17 @@
       <div class="col-md-4 card text-white bg-secondary mb-3 text-center " v-for="vehicle in bookedVehicles" :key="vehicle.id"
         style="max-width: 18rem;">
         <div class="card-header">{{vehicle.brand}} {{vehicle.model}}</div>
-        <div class="card-body">
-         <p> {{vehicle.type}}</p>
-         <p> Year of production {{vehicle.year}}</p>
-          <p> {{vehicle.petrol}} </p>
-          <p>Capacity: {{vehicle.capacity}} ccm</p>
-          <p> Course: {{vehicle.course}} KM </p>
-          <p> {{vehicle.gearbox}}</p>
-          <p> Price: {{vehicle.price}} PLN</p>
-          <button class="btn" @click="deleteCar(vehicle.id); sendID(vehicle.idList)">Cancel reservation</button>
+        <div class="card-body row">
+         <li> {{vehicle.type}}</li>
+          <li> Year of production: {{vehicle.year}}</li>
+          <li> Petrol: {{vehicle.petrol}} </li>
+          <li>Capacity: {{vehicle.capacity}} ccm</li>
+          <li> Course: {{vehicle.course}} KM </li>
+          <li> Gearbox: {{vehicle.gearbox}}</li>
+          <div class="col-md-12">
+          <p class="bookedtext"> Reservation: <br>{{vehicle.dateFrom}} to {{vehicle.dateTo}}</p>
+          <button class="btn btn-warning" @click="deleteCar(vehicle.id); sendID(vehicle.idList)">Cancel reservation</button>
+        </div>
         </div>
       </div>
     </div>
@@ -72,5 +74,10 @@ export default {
 </script>
 
 <style>
-
+.bookedtext{
+  font-weight: bold;
+}
+.card{
+  margin: 10px;
+}
 </style>

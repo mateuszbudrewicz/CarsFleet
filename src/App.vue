@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <Navbar />
+       <transition name="fade">
     <router-view/>
+       </transition>
     <Footer />
   </div>
 </template>
@@ -19,5 +21,10 @@ export default {
 </script>
 
 <style>
-
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
 </style>

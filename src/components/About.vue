@@ -1,8 +1,10 @@
 <template>
   <div class="container">
-    <div class="home">
-      <h1 class="text-center">About</h1>
-      <h6>Kontakt</h6>
+    <div class="row d-flex justify-content-center">
+
+<div class="home col-md-7 text-center">
+  <div class="row margin"></div>
+      <h2>Kontakt</h2>
       <p class="text"> Wypożyczalnia samochodów</p>
       <ul>Oddziały:
         <li>Lotnisko Wrocław, ul. Graniczna 190, 54-530 Wrocław</li>
@@ -16,6 +18,9 @@
         <p>Stawowa 9, 46-060 Folwark</p>
       </ul>
     </div>
+
+    </div>
+    
   </div>
 </template>
 
@@ -27,12 +32,10 @@
 </script>
 
 <style scoped>
-  .text {
-    text-align: justify;
-  }
-
   .home {
     margin-bottom: 50px;
   }
-
+.margin{
+  margin: 60px
+}
 </style>

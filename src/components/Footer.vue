@@ -14,6 +14,9 @@ export default {
 
 <style scoped>
 .foo {
-    background-color: pink;
+    background-color: rgb(94, 91, 91);
+    color: rgb(236, 236, 236);
+    padding: 10px;
+    border-radius: 50px 20px;
 }
 </style>
