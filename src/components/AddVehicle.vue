@@ -111,12 +111,10 @@
           <select class="form-control" v-model="model" v-case="'Volvo'">
             <option v-for="volvo in volvos" :key="volvo.id">{{volvo}}</option>
           </select>
-
-
         </div>
       </div>
 
-<div class="row d-flex justify-content-center">
+      <div class="row d-flex justify-content-center">
         <div class="col-md-2 input-group mb-2">
           Year of production:
         </div>
@@ -447,6 +445,16 @@
 </script>
 
 <style scoped>
+  .container {
+    margin-top: 60px;
+  }
+
+  .input-group {
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 2px 2px black;
+  }
+
   .form-group {
     margin: 3px;
   }

@@ -1,82 +1,42 @@
 <template>
   <div class="container">
-    <div class="search">
+    <div class="row navi">
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-6 col-sm-6  btn-group d-flex justify-content-center" role="group">
+        <i class="fas fa-clipboard-check" @click="show(vehicles)"> Show available cars</i>
+        <i class="fas fa-receipt" @click="showAll()"> The whole fleet</i>
+
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <input class="form-control col-sm-6" type="text" placeholder="Search car" aria-label="Search car" v-model="searchCar">
+      </div>
     </div>
-    <div class="row d-flex justify-content-between home">
-      <div class="col-md-4 card text-white bg-secondary mb-3 text-center " v-if="vehicle.book == false" v-for="vehicle in vehicles"
-        :key="vehicle.id" style="max-width: 18rem;">
-        <div class="card-header">{{vehicle.brand}} {{vehicle.model}}</div>
-        <div class="card-body row">
-          <li> {{vehicle.type}}</li>
-          <li> Year of production: {{vehicle.year}}</li>
-          <li> Petrol: {{vehicle.petrol}} </li>
-          <li>Capacity: {{vehicle.capacity}} ccm</li>
-          <li> Course: {{vehicle.course}} KM </li>
-          <li> Gearbox: {{vehicle.gearbox}}</li>
-          <div class="col-md-12">
-            <p class="price">{{vehicle.price}} PLN</p>
-            <button type="button" class="btn btn-primary col-md-9" data-toggle="modal" data-target="#exampleModalCenter">
-              Book
-            </button>
-            <button class="btn btn-warning col-md-4">
-              <router-link :to="{ name: 'EditVehicle', params: {vehicle_slug: vehicle.slug} }">
-                Edit
-              </router-link>
-            </button>
-            <button class="btn btn-danger col-md-4" @click="deleteCar(vehicle.id)">Delete</button>
-          </div>
-        </div>
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-          aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Book {{vehicle.brand}} {{vehicle.model}}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <p>Wybierz termin rezerwacji:</p>
-                <p>Od: <input type="date" name="bday" v-model="datefrom"></p>
-                <p>Do: <input type="date" name="bday" v-model="dateto"></p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button class="btn btn-success" data-dismiss="modal" @click="bookCar(vehicle)">Book</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 card text-white bg-secondary mb-3 text-center not-allowed" v-if="vehicle.book == true" v-for="vehicle in vehicles"
-        :key="vehicle.id" style="max-width: 18rem; opacity: 0.8">
-        <div class="card-header">{{vehicle.brand}} {{vehicle.model}}</div>
-        <div class="card-body row">
-          <li> {{vehicle.type}}</li>
-          <li> Year of production: {{vehicle.year}}</li>
-          <li> Petrol: {{vehicle.petrol}} </li>
-          <li>Capacity: {{vehicle.capacity}} ccm</li>
-          <li> Course: {{vehicle.course}} KM </li>
-          <li> Gearbox: {{vehicle.gearbox}}</li>
-          <div class="col-md-12">
-            <p class="price">{{vehicle.price}} PLN</p>
-            <p class="book"> Reservation: <br>{{vehicle.dateFrom}} to {{vehicle.dateTo}}</p>
-          </div>
-        </div>
-      </div>
+
+    <div class="row d-flex justify-content-start home">
+      <CarBooked v-for="vehicle in filteredCars" class="col-md-4 card text-white bg-secondary mb-3 text-center bookedCar"
+        :vehicle="vehicle" v-if="vehicle.book == true" :key="vehicle.id" style="max-width: 18rem; opacity: 0.8"></CarBooked>
+      <Car v-for="vehicle in filteredCars" class="col-md-4 card text-white bg-secondary mb-3 text-center" :vehicle="vehicle"
+        v-if="vehicle.book == false" :key="vehicle.id" style="max-width: 18rem">
+      </Car>
     </div>
   </div>
+
 </template>
 
 <script>
   import db from '@/firebase/init'
+  import Car from '@/components/Car'
+  import CarBooked from '@/components/CarBooked'
+
 
   export default {
     data() {
       return {
         vehicles: [],
         bookedVehicles: [],
+        availableCars: [],
+        searchCar: '',
         brand: '',
         model: '',
         year: '',
@@ -93,15 +53,19 @@
         dateto: ''
       }
     },
+    components: {
+      Car,
+      CarBooked,
+    },
+    computed: {
+      filteredCars() {
+        return this.vehicles.filter((vehicle) => {
+          return vehicle.brand.toLowerCase().match(this.searchCar.toLowerCase()) || vehicle.model.toLowerCase().match(
+            this.searchCar.toLowerCase())
+        })
+      }
+    },
     methods: {
-      deleteCar(id) {
-        db.collection('vehicles').doc(id).delete()
-          .then(() => {
-            this.vehicles = this.vehicles.filter(vehicle => {
-              return vehicle.id != id
-            })
-          })
-      },
       bookCar(vehicle) {
         db.collection('bookedVehicles').add({
           brand: vehicle.brand,
@@ -125,16 +89,26 @@
             dateTo: this.dateto
           })
           .then(() => {
-
             this.$router.push({
               name: 'BookedVehicles'
             })
           })
-
-
       },
+      show(vehicles) {
+        let arr = []
+        for (let i in this.vehicles) {
+          if (this.vehicles[i].book == false) {
+            arr.push(this.vehicles[i])
+          }
+        }
+        this.availableCars = arr;
+        this.vehicles = this.availableCars
+      },
+      showAll() {
+        location.reload()
+      }
     },
-    created() {
+    mounted() {
       db.collection('vehicles').get()
         .then(snapshot => {
           snapshot.forEach(doc => {
@@ -151,12 +125,34 @@
             this.bookedVehicles.push(vehicle);
           });
         });
+
     }
   }
 
 </script>
 
-<style>
+<style scoped>
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s;
+  }
+
+  .fade-enter,
+  .fade-leave-to {
+    opacity: 0;
+  }
+
+  .fa-clipboard-check,
+  .fa-receipt {
+    margin: 10px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .navi {
+    margin: 4px;
+  }
+
   .home {
     margin-bottom: 50px;
   }
@@ -171,18 +167,37 @@
     font-weight: bold
   }
 
-  .not-allowed {
-    cursor: not-allowed;
-  }
-
   .modal {
     color: black;
   }
 
-  .btn, {
+  .btn,
+    {
     margin: 2px;
   }
-.card{
-  margin: 10px;
-}
+
+  .bookedCar {
+    cursor: not-allowed;
+  }
+
+  .card {
+    margin: 35px;
+    background-image: url('../assets/img/speed.jpg');
+    -webkit-box-shadow: 10px 10px 22px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 22px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 22px 0px rgba(0, 0, 0, 0.75);
+    background-color: rgb(91, 96, 14, 0.8) !important;
+    transition: 0.5s;
+
+  }
+
+  .card:hover {
+    transform: scale(1.05);
+    transition: 0.7s;
+  }
+
+  input {
+    opacity: 0.7;
+  }
+
 </style>

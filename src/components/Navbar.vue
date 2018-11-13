@@ -9,27 +9,27 @@
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link">
-            <router-link :to="{ name: 'HomePage' }">Home</router-link>
+            <router-link :to="{ name: 'HomePage' }"><i class="fas fa-home"></i> Home</router-link>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link">
-            <router-link :to="{ name: 'CarList' }">Cars fleet</router-link>
+            <router-link :to="{ name: 'CarList' }"><i class="fas fa-list-ul"></i> Cars fleet</router-link>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link">
-            <router-link :to="{ name: 'BookedVehicles' }">Booked Cars</router-link>
+            <router-link :to="{ name: 'BookedVehicles' }"><i class="fas fa-clipboard-check"></i> Booked Cars</router-link>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link">
-            <router-link :to="{ name: 'AddVehicle' }">Add Vehicle </router-link>
+            <router-link :to="{ name: 'AddVehicle' }"><i class="fas fa-plus"></i> Add Vehicle </router-link>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link">
-            <router-link :to="{ name: 'About' }">About</router-link>
+            <router-link :to="{ name: 'About' }"><i class="fas fa-map-marked"></i> Contact</router-link>
           </a>
         </li>
       </ul>
@@ -45,10 +45,27 @@
 </script>
 
 <style scoped>
-.navig, a{
-    background-color: rgb(134, 133, 133)!important;
+  .navig,
+  nav {
     padding: 10px;
     border-radius: 25px;
-    color: rgb(236, 236, 236)!important;
-}
+    background: none !important;
+
+  }
+
+  a {
+    color: white;
+    transition: 0.5s;
+    text-decoration: none;
+  }
+
+  a:hover {
+    transform: scale(1.02);
+    transition: 0.7s;
+  }
+
+  .navbar-toggler {
+    background-color: white;
+  }
+
 </style>

@@ -21,6 +21,11 @@ export default {
 </script>
 
 <style>
+body{
+  color: white;
+  background-image: url('../src/assets/img/garage.jpg');
+  background-attachment: fixed;
+}
 .fade-enter-active, .fade-leave-active {
   transition: opacity 0.5s;
 }
