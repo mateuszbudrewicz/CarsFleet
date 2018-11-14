@@ -182,7 +182,8 @@
 
   .card {
     margin: 35px;
-    background-image: url('../assets/img/speed.jpg');
+    background-image: url('https://lh3.googleusercontent.com/VKI8NDmfuuc2o34LEp44aT5w2Mggl8uQ2pSdT4nbW4NmB2SMIlc_WhdajtFgEnluWlF8ivx08wvbfUgWXyfyjYG5mUOaPuQh0JxnhlfmlpChvmghABjz4SY8jcb4WGTpc1pcBUehifA9CJ_d2cnWVyDtjYTr_q_pmZj7ymVgCwV9sp1cW81w-40nhpoNLz2vVOwYYHdrBmZyGkqc3F-fgmrG2KNwwXhS077MFwM4QWR3_Y25CN51ZmoYPF6R3kReTLXKtgh9Eh7K5qn9xE1t7ZZfTxqQquS-XKK-apGdxgGQVu32ITFBst74tSKgjnslnMz896-1y_tdnek3gWnz5nHVKblwBweg6tMq7sxld6hmxmsBcNx1OTYkUWnVNA3P_wqmx5OubT5VjweXZBVw7pSvoY5Y-F5ohYOGhNqVC2s0XVtZctVIQ7xd-fYlJj6YShet4pHW_SXAcpjhdZbE6Eugr_0uWTaizCNKqvhERJSUB4wh6_DC0NfKZMtVOw_U5NGGQJqEAMG5gjPE1h71YNGKdZw8_-IXadPt57RZqe9RzKoqKBBPxRZcLJFx6RzzeJUZ2abKcqa3uWv-D3GIdghn1PWeAAcR0JjQIvZpoAetLWv5afhfCP2e7bTQFZKuA2ylZRJPRf3nqI-rYwmghX1f=w666-h617-no');
+    /* background-image: url('../assets/img/speed.png'); */
     -webkit-box-shadow: 10px 10px 22px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 10px 10px 22px 0px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 22px 0px rgba(0, 0, 0, 0.75);

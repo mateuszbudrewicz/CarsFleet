@@ -3,8 +3,8 @@
     <div class="header">
       <div class="text-box">
         <h1 class="heading-primary">
-          <span class="heading-primary-main">Cars Fleet</span>
-          <span class="heading-primary-sub">The best cars for You!</span>
+          <span class="heading-primary-main col-md-12">Cars Fleet</span>
+          <span class="heading-primary-sub col-md-12">The best cars for You!</span>
         </h1>
       </div>
     </div>
@@ -55,11 +55,12 @@
 
   .header {
     margin: 7px;
-    height: 55vh;
+    height: 50vh;
     background-image: linear-gradient(to right bottom,
       rgba(248, 154, 46, 0.6),
       rgba(30, 221, 110, 0.2)),
-      url('../assets/img/street.jpg');
+      url('https://lh3.googleusercontent.com/R-os3On4RzzW0BwAiIhGS1JDfwfjfdP6akxSCv-zlsCRPSR7DbGn5g9QIglWj96Y0TEZgeS0sotWR9FbefIWx3XuOT_tk6G04HwxxzO1K9HBraJPto72yL4Y88BHsR298vdrCRHaN3CMuKIqKHi5xRLF1AI5Cf0mPHVWgfKE4B19zXyTp9rrEdQ2OZdaOMTLqDHtZLHAVXdLhRrnikxrgBqzYKvjtEc8Md7lt9454R11kPxVpNC9qFsCkNl0Ml5nEMBisoNNy-9zAMfHkjUXGlKf8I72qG0gfc9qf9l9O8tcu7Ds1vB8bQsJEchAIyzTklrw5jOj6XydTeBC3wMpdVwnQxD-gRlcKZuFdXNsWsy-ggA-fqDA0EQfToqmf29-lDTtFlWh4iQCS72_ucZAPIbuOp1GTO7iQdFnW1uOVc5C1e6pvvXl-W-5VuVfgysK6lhC0w5sA_F69SPKo8i612yuJdxV_BMN04iZp9Ypmwb8prlXR5Wn9NVhZUi1Jej492X80OIvAQ5DxtbnX7tOEBqBjasxj1mt68FAhyO8jzT5TeLzPpEvz0oVBDTZkYz9WtLAG_rs_TpmZp-K5z_NKZx7RyspOv2xnf2p2ibzSjPqff646YV0er7IswwYDrdGN4oY4uI63JT3FilO3r4IDvLq=w640-h426-no');
+    /* url('../assets/img/street.png'); */
     background-size: cover;
     background-position: top;
     position: relative;
@@ -89,7 +90,7 @@
     font-size: 60px;
     font-weight: 400;
     letter-spacing: 35px;
-
+    margin: 15px;
     animation-name: moveInLeft;
     animation-duration: 3s;
     animation-timing-function: ease-out
